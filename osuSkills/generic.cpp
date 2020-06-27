@@ -274,7 +274,7 @@ void GatherTargetPoints(Beatmap &beatmap)
 {
 	TIMING targetPoint;
 	int i = 0;
-	int prev_time = INT_MIN;
+	int prev_time = -2147483647;
 
 	for (auto &hitObj : beatmap.hitObjects)
 	{

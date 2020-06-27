@@ -82,13 +82,13 @@ namespace osuSkills
 		}
 	}
 
-	extern "C" __declspec(dllexport) int ReloadFormulaVars()
+	extern "C" int ReloadFormulaVars()
 	{
 		LoadFormulaVars();
 		return 1;
 	}
 	
-	extern "C" __declspec(dllexport) int CalculateBeatmapSkills(std::string filepath, int &circles, int &sliderspinners, int mods, Skills& skills, std::string &name, double &ar, double &cs)
+	extern "C" int CalculateBeatmapSkills(std::string filepath, int &circles, int &sliderspinners, int mods, Skills& skills, std::string &name, double &ar, double &cs)
 	{
 		// redirect cout to file
 		std::fstream output("log.txt", std::fstream::out | std::fstream::app);
@@ -146,7 +146,7 @@ namespace osuSkills
 		bool failed;
 	};
 
-	extern "C" __declspec(dllexport) CalculationResult BiCycleCalculateBeatmapSkills(char* filepath, int mods)
+	extern "C" CalculationResult BiCycleCalculateBeatmapSkills(char* filepath, int mods)
 	{
 		// redirect cout to file
 		std::fstream output("log.txt", std::fstream::out | std::fstream::app);

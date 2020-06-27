@@ -9,7 +9,7 @@ import (
 
 /*
 #cgo CFLAGS: -I .
-#cgo LDFLAGS: -L . -losuSkills
+#cgo LDFLAGS: -L .
 #include "osuSkills.h"
 #include <stdio.h>
 #include <stdlib.h>
