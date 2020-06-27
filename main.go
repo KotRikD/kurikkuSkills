@@ -53,6 +53,12 @@ func main() {
 		panic(err)
 	}
 
+	api.Config = Config
+	api.DB = DB
+	api.RD = RD
+	helpers.DB = DB
+	helpers.Config = Config
+
 	if Config.NeedSemki {
 		err := SemkiRecalculator()
 		if err != nil {
@@ -60,12 +66,6 @@ func main() {
 		}
 		return
 	}
-
-	api.Config = Config
-	api.DB = DB
-	api.RD = RD
-	helpers.DB = DB
-	helpers.Config = Config
 
 	StartListenRedis()
 	api.InitServer()
