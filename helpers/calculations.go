@@ -41,8 +41,10 @@ func CalculateScoreByValues(scoreID int, mapID int, mods int) error {
 // ReCalculateSkills Recalculate All users scores
 func ReCalculateSkills(UserID int) error {
 	rows, err := DB.Query(`SELECT 
-		scores.id, scores.userid, scores.completed, scores.beatmap_md5, scores.mods, scores.max_combo, scores.play_mode, scores.misses_count, scores.accuracy,
-		scores_skills.stamina, scores_skills.tenacity, scores_skills.agility, scores_skills.pprecision, scores_skills.reading, scores_skills.memory, scores_skills.accuracy, scores_skills.reaction, scores_skills.sliderspinners, scores_skills.circles
+		scores.id, scores.userid, scores.completed, scores.beatmap_md5, scores.mods, scores.max_combo, scores.misses_count, scores.accuracy AS accuracy,
+		scores_skills.stamina, scores_skills.tenacity, scores_skills.agility, scores_skills.pprecision, scores_skills.reading, scores_skills.memory, scores_skills.accuracy, 
+		scores_skills.reaction, 
+		scores_skills.sliderspinners, scores_skills.circles
 		beatmaps.max_combo, beatmaps.hit_length
 	FROM scores
 	RIGHT JOIN scores_skills ON scores_skills.id = scores.id
@@ -59,8 +61,9 @@ func ReCalculateSkills(UserID int) error {
 		var scoreskillspart structs.SkillsScores
 		var beatmappart structs.Beatmap
 
-		err := rows.Scan(&scorepart.ID, &scorepart.UserID, &scorepart.Completed, &scorepart.BeatmapMD5, &scorepart.Mods, &scorepart.MaxCombo, &scorepart.CountMiss,
-			&scoreskillspart.Stamina, &scoreskillspart.Tenacity, &scoreskillspart.Agility, &scoreskillspart.Precision, &scoreskillspart.Reading, &scoreskillspart.Memory, &scoreskillspart.Accuracy, &scoreskillspart.Reaction, &scoreskillspart.SliderSpinners, &scoreskillspart.Circles,
+		err := rows.Scan(&scorepart.ID, &scorepart.UserID, &scorepart.Completed, &scorepart.BeatmapMD5, &scorepart.Mods, &scorepart.MaxCombo, &scorepart.CountMiss, &scorepart.Accuracy,
+			&scoreskillspart.Stamina, &scoreskillspart.Tenacity, &scoreskillspart.Agility, &scoreskillspart.Precision, &scoreskillspart.Reading, &scoreskillspart.Memory,
+			&scoreskillspart.Accuracy, &scoreskillspart.Reaction, &scoreskillspart.SliderSpinners, &scoreskillspart.Circles,
 			&beatmappart.MaxCombo, &beatmappart.HitLength,
 		)
 		if err != nil {
