@@ -2,7 +2,6 @@ package osuSkills
 
 import (
 	"errors"
-	"fmt"
 
 	"github.com/KotRikD/kurikkuSkills/structs"
 )
@@ -55,7 +54,6 @@ func LoadVars() {
 
 // CalculateSkills calculating beatmap skills
 func CalculateSkills(path string, mods int) (CalculationResult, error) {
-	fmt.Println(path)
 	filepath := C.CString(path)
 	f2 := C.FPNTR(C.BiCycleCalculateBeatmapSkills)
 	calculation := C.bridgeBiCycleCalculateBeatmapSkills(f2, filepath, C.int(mods))

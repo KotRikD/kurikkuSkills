@@ -46,7 +46,6 @@ func SemkiRecalculator() error {
 
 	fmt.Println("[I] Started calculations for user skills")
 	for _, userID := range userIDs {
-		fmt.Println("[I]", userID)
 		err := helpers.ReCalculateSkills(userID)
 		if err != nil {
 			fmt.Println("[I] Skills of", userID, "can't be calculated", err)
