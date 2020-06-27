@@ -32,7 +32,11 @@ func SemkiRecalculator() error {
 		}
 
 		fmt.Println("[I] Calculating skills for", scoreDB.ID)
-		userIDs = append(userIDs, scoreDB.UserID)
+
+		exists, _ := helpers.ExistsInArray(scoreDB.UserID, userIDs)
+		if exists != true {
+			userIDs = append(userIDs, scoreDB.UserID)
+		}
 		err = helpers.CalculateScoreByValues(scoreDB.ID, beatmapID, scoreDB.Mods)
 		if err != nil {
 			fmt.Println("[I] Skills calculation failed", scoreDB.ID, ":", err)
