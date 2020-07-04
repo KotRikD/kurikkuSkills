@@ -66,10 +66,12 @@ func CalculateSkills(path string, mods int) (CalculationResult, error) {
 		calculation.tenacity = 0
 		calculation.stamina = 0
 		calculation.accuracy /= 2
+		calculation.agility /= 3
 	} else if mods&structs.AP > 0 {
 		calculation.precision = 0
 		calculation.agility = 0
 		calculation.accuracy /= 2
+		calculation.agility /= 3
 	}
 
 	return CalculationResult{

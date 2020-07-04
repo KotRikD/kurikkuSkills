@@ -92,6 +92,7 @@ func ReCalculateSkills(UserID int) error {
 			newSkills.Reading *= math.Pow(0.97, float64(scorepart.CountMiss)) * combomult
 			newSkills.Memory *= math.Pow(0.97, float64(scorepart.CountMiss)) * combomult
 			newSkills.Reaction *= math.Pow(0.97, float64(scorepart.CountMiss)) * combomult
+//			newSkills.Accuracy *= math.Pow(0.97, float64(scorepart.Accuracy)) * combomult
 		}
 
 		if scoreskillspart.Circles == 0 {
